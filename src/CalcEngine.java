@@ -11,16 +11,16 @@ public class CalcEngine
 
     // Are we already building a value in the display, or will the
     // next digit be the first of a new one?
-    private boolean buildingDisplayValue;
+    protected boolean buildingDisplayValue;
     // Has a left operand already been entered (or calculated)?
-    private boolean haveLeftOperand;
+    protected boolean haveLeftOperand;
     // The most recent operator that was entered.
-    private char lastOperator;
+    protected char lastOperator;
 
     // The current value (to be) shown in the display.
-    private int displayValue;
+    protected int displayValue;
     // The value of an existing left operand.
-    private int leftOperand;
+    protected int leftOperand;
 
     /**
      * Create a CalcEngine.
@@ -72,11 +72,6 @@ public class CalcEngine
     public void minus()
     {
         applyOperator('-');
-    }
-
-    public void multi()
-    {
-        applyOperator('*');
     }
 
     /**
@@ -141,7 +136,7 @@ public class CalcEngine
      * The result becomes both the leftOperand and
      * the new display value.
      */
-    private void calculateResult()
+    protected void calculateResult()
     {
         switch(lastOperator) {
             case '+':
@@ -155,11 +150,6 @@ public class CalcEngine
                 leftOperand = displayValue;
                 break;
 
-            case '*':
-                displayValue = leftOperand * displayValue;
-                haveLeftOperand = true;
-                leftOperand = displayValue;
-                break;
             default:
                 keySequenceError();
                 break;
@@ -170,7 +160,7 @@ public class CalcEngine
      * Apply an operator.
      * @param operator The operator to apply.
      */
-    private void applyOperator(char operator)
+    protected void applyOperator(char operator)
     {
         // If we are not in the process of building a new operand
         // then it is an error, unless we have just calculated a
@@ -198,7 +188,7 @@ public class CalcEngine
     /**
      * Report an error in the sequence of keys that was pressed.
      */
-    private void keySequenceError()
+    protected void keySequenceError()
     {
         System.out.println("A key sequence error has occurred.");
         // Reset everything.

@@ -9,6 +9,7 @@ public class Calculator
 {
     private CalcEngine engine;
     private UserInterface gui;
+    private NewCalcEngine newEngine;
 
     public static void main(String[] args) {
         Calculator c = new Calculator();
@@ -20,6 +21,7 @@ public class Calculator
     {
         engine = new CalcEngine();
         gui = new UserInterface(engine);
+        newEngine = new NewCalcEngine();
     }
 
     /**

@@ -14,12 +14,12 @@ import javax.swing.border.*;
 public class UserInterface
         implements ActionListener
 {
-    private CalcEngine calc;
-    private boolean showingAuthor;
+    protected CalcEngine calc;
+    protected boolean showingAuthor;
 
-    private JFrame frame;
-    private JTextField display;
-    private JLabel status;
+    protected JFrame frame;
+    protected JTextField display;
+    protected JLabel status;
 
     /**
      * Create a user interface.
@@ -45,7 +45,7 @@ public class UserInterface
     /**
      * Make the frame for the user interface.
      */
-    private void makeFrame()
+    protected void makeFrame()
     {
         frame = new JFrame(calc.getTitle());
 
@@ -70,8 +70,7 @@ public class UserInterface
         addButton(buttonPanel, "1");
         addButton(buttonPanel, "2");
         addButton(buttonPanel, "3");
-        addButton(buttonPanel, "*");
-        //buttonPanel.add(new JLabel(" "));
+        buttonPanel.add(new JLabel(" "));
 
         addButton(buttonPanel, "0");
         addButton(buttonPanel, "+");
@@ -91,7 +90,7 @@ public class UserInterface
      * @param panel The panel to receive the button.
      * @param buttonText The text for the button.
      */
-    private void addButton(Container panel, String buttonText)
+    protected void addButton(Container panel, String buttonText)
     {
         JButton button = new JButton(buttonText);
         button.addActionListener(this);
@@ -126,9 +125,6 @@ public class UserInterface
         else if(command.equals("-")) {
             calc.minus();
         }
-        else if(command.equals("*")) {
-            calc.multi();
-        }
         else if(command.equals("=")) {
             calc.equals();
         }
@@ -147,7 +143,7 @@ public class UserInterface
      * Update the interface display to show the current value of the
      * calculator.
      */
-    private void redisplay()
+    protected void redisplay()
     {
         display.setText("" + calc.getDisplayValue());
     }
@@ -156,7 +152,7 @@ public class UserInterface
      * Toggle the info display in the calculator's status area between the
      * author and version information.
      */
-    private void showInfo()
+    protected void showInfo()
     {
         if(showingAuthor)
             status.setText(calc.getVersion());
