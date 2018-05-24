@@ -1,5 +1,4 @@
 public class CalcEngineHex extends CalcEngine {
-    private String displayText = "";
     protected boolean showingHex = false;
 
     /**
@@ -33,23 +32,11 @@ public class CalcEngineHex extends CalcEngine {
     }
 
     /**
-     * Changes current display-value to hexadecimal or decimal.
-     * Also adds/removes buttons depending on that.
+     * Converts a number into a Hexadecimal number and returns it.
+     * @param number A number to be converted to Hexadecimal.
+     * @return A String containing the number represented as a Hexadecimal number.
      */
-    protected void switchDecHex(){
-        if(!showingHex){
-            displayText = (Integer.toHexString(getDisplayValue())).toUpperCase();
-            showingHex = true;
-        }else{
-            showingHex = false;
-        }
-    }
-    /**
-     * Clears the Hexadecimal display-value.
-     */
-    @Override
-    public void clear() {
-        super.clear();
-        displayText = "0";
+    protected String calculateHex(int number){
+        return Integer.toHexString(number).toUpperCase();
     }
 }

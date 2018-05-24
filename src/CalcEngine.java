@@ -1,8 +1,8 @@
 /**
  * The main part of the calculator doing the calculations.
  *
- * @author  David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author David Panagiotopulos and Bernhard Hoffmann | Original: David J. Barnes and Michael Kolling
+ * @version 2018.05.24
  */
 public class CalcEngine
 {
@@ -13,14 +13,14 @@ public class CalcEngine
     // next digit be the first of a new one?
     protected boolean buildingDisplayValue;
     // Has a left operand already been entered (or calculated)?
-    protected boolean haveLeftOperand;
+    private boolean haveLeftOperand;
     // The most recent operator that was entered.
-    protected char lastOperator;
+    private char lastOperator;
 
     // The current value (to be) shown in the display.
     protected int displayValue;
     // The value of an existing left operand.
-    protected int leftOperand;
+    private int leftOperand;
 
     /**
      * Create a CalcEngine.

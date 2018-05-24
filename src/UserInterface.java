@@ -8,18 +8,18 @@ import javax.swing.border.*;
  * done here. This class is responsible just for putting up the display on
  * screen. It then refers to the "CalcEngine" to do all the real work.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author David Panagiotopulos and Bernhard Hoffmann | Original: David J. Barnes and Michael Kolling
+ * @version 2018.05.24
  */
 public class UserInterface
         implements ActionListener
 {
     protected CalcEngineHex calc;
-    protected boolean showingAuthor;
+    private boolean showingAuthor;
 
     protected JFrame frame;
     protected JTextField display;
-    protected JLabel status;
+    private JLabel status;
 
     /**
      * Create a user interface.

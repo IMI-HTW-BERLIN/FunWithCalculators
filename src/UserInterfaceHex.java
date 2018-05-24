@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * A graphical user interface extending the original one by adding Hexadecimal buttons.
+ */
 public class UserInterfaceHex extends UserInterface {
     private JLabel labelDecHexSwitch;
     private JPanel buttonsForHex;
@@ -76,7 +79,7 @@ public class UserInterfaceHex extends UserInterface {
                 calc.numberPressed(15);
                 break;
             case "Dec/Hex":
-                calc.switchDecHex();
+                calc.showingHex = !calc.showingHex;
                 switchHexButtons();
             default:
                 break;
@@ -91,7 +94,7 @@ public class UserInterfaceHex extends UserInterface {
     @Override
     protected void redisplay() {
         if(!calc.showingHex)super.redisplay();
-        else display.setText((Integer.toHexString(calc.getDisplayValue())).toUpperCase());
+        else display.setText(calc.calculateHex(calc.getDisplayValue()));
     }
 
     /**
