@@ -149,7 +149,16 @@ public class CalcEngine
                 haveLeftOperand = true;
                 leftOperand = displayValue;
                 break;
-
+            case '*':
+                displayValue *= leftOperand;
+                haveLeftOperand = true;
+                leftOperand = displayValue;
+                break;
+            case '/':
+                displayValue = Math.round(((float)leftOperand/displayValue));
+                haveLeftOperand = true;
+                leftOperand = displayValue;
+                break;
             default:
                 keySequenceError();
                 break;
@@ -194,4 +203,17 @@ public class CalcEngine
         // Reset everything.
         clear();
     }
+
+    public void multi() {
+        applyOperator('*');
+    }
+
+    public void div(){
+        applyOperator('/');
+    }
+
+    public void switchSign(){
+        displayValue *= -1;
+    }
+
 }

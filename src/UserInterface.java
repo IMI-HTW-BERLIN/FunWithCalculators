@@ -56,11 +56,11 @@ public class UserInterface
         display = new JTextField();
         contentPane.add(display, BorderLayout.NORTH);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
+        JPanel buttonPanel = new JPanel(new GridLayout(6, 4));
         addButton(buttonPanel, "7");
         addButton(buttonPanel, "8");
         addButton(buttonPanel, "9");
-        addButton(buttonPanel, "C");
+        addButton(buttonPanel, "c");
 
         addButton(buttonPanel, "4");
         addButton(buttonPanel, "5");
@@ -77,10 +77,15 @@ public class UserInterface
         addButton(buttonPanel, "-");
         addButton(buttonPanel, "=");
 
+        addButton(buttonPanel, "*");
+        addButton(buttonPanel, "/");
+        addButton(buttonPanel, "+/-");
+        buttonPanel.add(new JLabel(" "));
+
         contentPane.add(buttonPanel, BorderLayout.CENTER);
 
-        status = new JLabel(calc.getAuthor());
-        contentPane.add(status, BorderLayout.SOUTH);
+        //status = new JLabel(calc.getAuthor());
+        //contentPane.add(status, BorderLayout.SOUTH);
 
         frame.pack();
     }
@@ -128,11 +133,20 @@ public class UserInterface
         else if(command.equals("=")) {
             calc.equals();
         }
-        else if(command.equals("C")) {
+        else if(command.equals("c")) {
             calc.clear();
         }
         else if(command.equals("?")) {
             showInfo();
+        }
+        else if(command.equals("*")) {
+            calc.multi();
+        }
+        else if(command.equals("/")) {
+            calc.div();
+        }
+        else if(command.equals("+/-")) {
+            calc.switchSign();
         }
         // else unknown command.
 
