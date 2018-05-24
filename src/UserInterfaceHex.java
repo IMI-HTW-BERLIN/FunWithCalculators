@@ -6,7 +6,7 @@ public class UserInterfaceHex extends UserInterface {
     private JLabel labelDecHexSwitch;
     private JPanel buttonsForHex;
     /**
-     * Create a user interface.
+     * Create a user interface using the superclass. Adds buttons for hexadecimal calculation.
      *
      * @param engine The calculator engine.
      */
@@ -15,6 +15,9 @@ public class UserInterfaceHex extends UserInterface {
         makeHexFrame();
     }
 
+    /**
+     * Adds buttons for Hexadecimal calculation and a button to switch between Hex and Dec.
+     */
     private void makeHexFrame(){
         JPanel contentPane = (JPanel)frame.getContentPane();
         labelDecHexSwitch = new JLabel();
@@ -45,7 +48,10 @@ public class UserInterfaceHex extends UserInterface {
         frame.pack();
     }
 
-
+    /**
+     * Overrides the original actionPerformed method by adding Hthe buttons for Hexadecimal calculation.
+     * @param event The event that has occured.
+     */
     @Override
     public void actionPerformed(ActionEvent event){
         String command = event.getActionCommand();
@@ -79,12 +85,18 @@ public class UserInterfaceHex extends UserInterface {
         redisplay();
     }
 
+    /**
+     * This will change the display to show Hexadecimal instead of Decimal.
+     */
     @Override
     protected void redisplay() {
         if(!calc.showingHex)super.redisplay();
         else display.setText((Integer.toHexString(calc.getDisplayValue())).toUpperCase());
     }
 
+    /**
+     * Configures the button "Dec/Hex" and text next to this button.
+     */
     private void switchHexButtons(){
         if(calc.showingHex) {
             labelDecHexSwitch.setText("Hex");
