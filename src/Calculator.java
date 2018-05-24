@@ -8,7 +8,7 @@
 public class Calculator
 {
     private UserInterfaceHex gui;
-    private CalcEngine engine;
+    private CalcEngineHex engine;
 
     public static void main(String[] args) {
         Calculator c = new Calculator();
@@ -18,7 +18,7 @@ public class Calculator
      */
     public Calculator()
     {
-        engine = new CalcEngine();
+        engine = new CalcEngineHex();
         gui = new UserInterfaceHex(engine);
     }
 

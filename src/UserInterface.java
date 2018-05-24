@@ -14,7 +14,7 @@ import javax.swing.border.*;
 public class UserInterface
         implements ActionListener
 {
-    protected CalcEngine calc;
+    protected CalcEngineHex calc;
     protected boolean showingAuthor;
 
     protected JFrame frame;
@@ -25,7 +25,7 @@ public class UserInterface
      * Create a user interface.
      * @param engine The calculator engine.
      */
-    public UserInterface(CalcEngine engine)
+    public UserInterface(CalcEngineHex engine)
     {
         calc = engine;
         showingAuthor = true;
@@ -49,6 +49,12 @@ public class UserInterface
     {
         frame = new JFrame(calc.getTitle());
 
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         JPanel contentPane = (JPanel)frame.getContentPane();
         contentPane.setLayout(new BorderLayout(8, 8));
         contentPane.setBorder(new EmptyBorder( 10, 10, 10, 10));
@@ -57,30 +63,31 @@ public class UserInterface
         contentPane.add(display, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel(new GridLayout(6, 4));
+        addButton(buttonPanel, "c");
+        buttonPanel.add(new JLabel(" "));
+        buttonPanel.add(new JLabel(" "));
+        buttonPanel.add(new JLabel(" "));
+
         addButton(buttonPanel, "7");
         addButton(buttonPanel, "8");
         addButton(buttonPanel, "9");
-        addButton(buttonPanel, "c");
+        addButton(buttonPanel, "+");
 
         addButton(buttonPanel, "4");
         addButton(buttonPanel, "5");
         addButton(buttonPanel, "6");
-        addButton(buttonPanel, "?");
+        addButton(buttonPanel, "-");
 
         addButton(buttonPanel, "1");
         addButton(buttonPanel, "2");
         addButton(buttonPanel, "3");
-        buttonPanel.add(new JLabel(" "));
-
-        addButton(buttonPanel, "0");
-        addButton(buttonPanel, "+");
-        addButton(buttonPanel, "-");
-        addButton(buttonPanel, "=");
-
         addButton(buttonPanel, "*");
-        addButton(buttonPanel, "/");
+
         addButton(buttonPanel, "+/-");
-        buttonPanel.add(new JLabel(" "));
+        addButton(buttonPanel, "0");
+        addButton(buttonPanel, "=");
+        addButton(buttonPanel, "/");
+
 
         contentPane.add(buttonPanel, BorderLayout.CENTER);
 
